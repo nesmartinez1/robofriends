@@ -7,17 +7,12 @@ import './App.css'
 export default function App() {
     const [robots, setRobots] = useState([])
     const [searchfield, setSearchfield] = useState('')
-    const [count, setCount] = useState(0)
 
     useEffect(() => {
         fetch("https://jsonplaceholder.typicode.com/users")
             .then(response => response.json())
             .then(users => setRobots(users))
     }, []) // empty array means run useEffect once (componentDidMount), [searchfield] means run use effect when searchfield changes
-
-    useEffect(() => {
-        console.log(count)
-    }, [count])
 
     const onSearchChange = (event) => {
         setSearchfield(event.target.value)
